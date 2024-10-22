@@ -5,6 +5,15 @@ const game = new BattleGame(dice, player, enemy);
 
 const ul = document.getElementById("history");
 const diceElement = document.getElementById("dice-value");
+const btnReload = document.getElementById("reload");
+
+btnReload.addEventListener("click", ()=>{
+  ul.innerHTML = '';
+  player.life = 100;
+  enemy.life = 100
+  renderLife(player)
+  renderLife(enemy)
+})
 
 function play() {
   document.getElementById("attack").disabled = true;
