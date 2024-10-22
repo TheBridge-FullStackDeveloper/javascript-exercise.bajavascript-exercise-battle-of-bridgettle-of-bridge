@@ -1,10 +1,9 @@
 class Dice {
-    constructor(value) {
-        this.value = Math.floor(Math.random()*6) + 1;
-        this.value = value;
+    constructor () {
+        this.value = 1;
     }
 
-    roll(value) {
-        return value;
+    roll() {
+        this.value = Math.floor(Math.random() * 6) + 1;
     }
 }
