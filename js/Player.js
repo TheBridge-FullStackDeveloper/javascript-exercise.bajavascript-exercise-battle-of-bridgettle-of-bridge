@@ -9,7 +9,14 @@ class Player {
         if (this.life <=0) return;
         const damage = this.attack * diceValue;
         player.life -= damage;
+
+        
+
         console.log(`${this.name} ataca a ${player.name} y le hace ${damage} puntos de daño`);
+
+        if (player.life < 0) {
+            player.life = 0; 
+        }
 
         if (player.isDead()) { 
             console.log(`${player.name} ha muerto.`);

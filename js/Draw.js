@@ -33,6 +33,7 @@ function renderLife(player) {
   const lifeBar = document.getElementById(
     "health-" + player.name.toLowerCase()
   );
+  
   lifeBar.setAttribute("style", "width:" + player.life + "%");
 }
 

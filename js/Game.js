@@ -1,32 +1,33 @@
+/* La clase BattleGame es la encargada de gestionar el juego en sí y tiene los siguientes atributos:
+dice: una instancia de la clase Dice para lanzar dados.
+player: una instancia de la clase Player que representa al jugador.
+enemy: una instancia de la clase Player que representa al enemigo. */
 class BattleGame {
-    constructor(playerName, enemyName) {
-        this.dice = new Dice();  // Instancia de la clase Dice
-        this.player = new Player(playerName, 20);  // Crea un jugador con 20 de vida
-        this.enemy = new Player(enemyName, 20);  // Crea un enemigo con 20 de vida
+    constructor(dice, player, enemy) {
+        this.dice = dice;
+        this.player = player;
+        this.enemy = enemy;
     }
-
-    // Método que gestiona el ataque entre el atacante y el defensor
+    /*La clase incluye los siguientes métodos:
+    battle(attacker, defender): este método recibe un atacante y un defensor como parámetros y hace que el atacante ataque al defensor. Esto implica usar el dado para determinar el valor del ataque y reducir la vida del defensor en consecuencia.
+    Asegúrate de implementar estas clases y métodos en tu juego para que funcione correctamente. */
     battle(attacker, defender) {
-        const attackValue = this.dice.roll();  // Lanza el dado para determinar el valor del ataque
-        console.log(`${attacker.name} ataca a ${defender.name} con un valor de ataque de ${attackValue}.`);
-        defender.takeDamage(attackValue);  // El defensor recibe daño
-    }
+        const attackValue = this.dice.roll();
+        console.log(`${attacker.name} ataca a ${defender.name} con un valor de ${attackValue}`);
+        attacker.attackPlayer(defender, attackValue);
 
-    // Método para iniciar el juego
-    start() {
-        // Ciclo de batalla hasta que uno de los jugadores se quede sin vida
-        while (this.player.isAlive() && this.enemy.isAlive()) {
-            this.battle(this.player, this.enemy);  // Jugador ataca al enemigo
-            if (this.enemy.isAlive()) {
-                this.battle(this.enemy, this.player);  // Enemigo ataca al jugador si sigue vivo
+        
+        
+        //Cuidado con este codigo que hecho modificaciones
+        if (defender.life > 0) {
+            defender.life -= attacker.attack * attackValue;
+      
+           
+            if (defender.life < 0) {
+              defender.life = 0;
             }
-        }
-
-        // Mensaje final de quién ganó
-        if (this.player.isAlive()) {
-            console.log(`${this.player.name} ha ganado la batalla!`);
-        } else {
-            console.log(`${this.enemy.name} ha ganado la batalla!`);
-        }
+          }
     }
+
+    
 }
