@@ -13,6 +13,11 @@ function play() {
   const player = game.player;
   const enemy = game.enemy;
 
+  if (player.isDead() || enemy.isDead()) {
+    document.getElementById("attack").disabled = true;
+    return; 
+  }
+
   game.battle(player, enemy);
 
   renderBattleLog(player, enemy);
@@ -43,9 +48,19 @@ function renderBattleLog(attacker, defender) {
   diceElement.innerText = game.dice.value;
   let text, defeatText;
 
+  const damage = attacker.attack * game.dice.value;
+
+  // Mostrar mensaje en la consola si el daño es mayor a 10
+  if (damage > 10) {
+    text = `Ataque critico!!! ${attacker.name} ataca a ${defender.name} y le hace ${
+    attacker.attack * game.dice.value
+  } puntos de daño`;;
+    console.log(text);
+  } else { 
   text = `${attacker.name} ataca a ${defender.name} y le hace ${
     attacker.attack * game.dice.value
   } puntos de daño`;
+  }
 
   let elementText = document.createTextNode(text);
   let li = document.createElement("li");
