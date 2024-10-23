@@ -1,6 +1,6 @@
 const dice = new Dice();
-const player = new Player("Heroe", 100, 100);
-const enemy = new Player("Enemigo", 100, 10);
+const player = new Player("Heroe", 100, 2);
+const enemy = new Player("Enemigo", 100, 3);
 const game = new BattleGame(dice, player, enemy);
  
 const ul = document.getElementById("history");
