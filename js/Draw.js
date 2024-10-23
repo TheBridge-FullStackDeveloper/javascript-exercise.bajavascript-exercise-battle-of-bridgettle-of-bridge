@@ -8,13 +8,15 @@ const diceElement = document.getElementById("dice-value");
 const btnReload = document.getElementById("reload");
  
 btnReload.addEventListener("click", ()=>{
-  const gameOver = document.getElementById("game-over");;
-  ul.innerHTML = '';
+  document.getElementById("attack").disabled = false;
+  const gameOver = document.getElementById("game-over");
+  gameOver.classList.add('hidden');
+  btnReload.classList.add('hidden');
   player.life = 100;
   enemy.life = 100
   renderLife(player)
   renderLife(enemy)
-  gameOver.classList.add('hidden');
+  ul.innerHTML = '';
   diceElement.innerText = 0
 })
  
@@ -65,7 +67,10 @@ if(attacker.attack * game.dice.value >= 10 ){
     attacker.attack * game.dice.value
   } puntos de daño`;
 }
- 
+ if (attacker.life <= 0){
+  document.getElementById("attack").disabled = true 
+  return 
+ }
   
  
   let elementText = document.createTextNode(text);
@@ -86,6 +91,7 @@ if(attacker.attack * game.dice.value >= 10 ){
  
     const gameOver = document.getElementById("game-over");
     gameOver.className = "show";
+    btnReload.classList.remove('hidden')
     document.getElementById("attack").disabled = true;
   }
 }

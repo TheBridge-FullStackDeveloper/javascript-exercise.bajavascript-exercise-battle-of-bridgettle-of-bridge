@@ -11,7 +11,7 @@ class Player {
         return diceValue * this.attack
     }
     isDead(){
-        return !this.life
+        return this.life <= 0 
     }
 }
 
