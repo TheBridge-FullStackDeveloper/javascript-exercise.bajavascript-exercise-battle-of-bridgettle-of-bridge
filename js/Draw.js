@@ -6,6 +6,8 @@ const game = new BattleGame(dice, player, enemy);
 const ul = document.getElementById("history");
 const diceElement = document.getElementById("dice-value");
 
+//Bonuses tratar en draw 
+
 function play() {
   document.getElementById("attack").disabled = true;
   const player = game.player;
