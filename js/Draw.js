@@ -8,6 +8,7 @@ const diceElement = document.getElementById("dice-value");
 
 //Bonuses tratar en draw 
 
+
 function play() {
   document.getElementById("attack").disabled = true;
   const player = game.player;
@@ -35,6 +36,35 @@ function play() {
 renderLife(game.player);
 renderLife(game.enemy);
 document.getElementById("attack").addEventListener("click", play);
+
+//reset aca 
+
+// Función para reiniciar el juego
+function resetGame() {
+  // Restablece las vidas de los jugadores
+  game.player.life = 100;
+  game.enemy.life = 100;
+
+  // Vuelve a habilitar el botón de ataque
+  document.getElementById("attack").disabled = false;
+
+  // Limpia el historial de batallas
+  ul.innerHTML = "";
+
+  // Oculta el mensaje de "game over"
+  const gameOver = document.getElementById("game-over");
+  gameOver.className = "";
+
+  // Vuelve a renderizar las barras de vida
+  renderLife(game.player);
+  renderLife(game.enemy);
+}
+
+// Añadir evento al botón de reinicio
+document.getElementById("reset").addEventListener("click", resetGame);
+
+
+// termina aca 
 
 function renderLife(player) {
   const lifeBar = document.getElementById(
