@@ -65,3 +65,35 @@ function renderBattleLog(attacker, defender) {
     document.getElementById("attack").disabled = true;
   }
 }
+
+// Si uno de los player se queda sin vida, el juego se reinicia con un botón reset.
+
+// El botón reset en html ya está puesto, solo falta añadirle un evento que reinicie el juego.
+
+// Qué reinicia el boton reset? 
+
+// 1. La vida de los dos players
+// 2. El historial de la batalla
+// 3. El estado del juego 
+// 5. El mensaje de game over 
+// 6. El dado
+// 7. La barra de vida de los players
+
+
+// ¿Cómo se reinicia el juego?
+// 1. Se crea una función resetGame que reinicie la vida de los dos players, el historial de la batalla, el estado del juego, el botón de ataque, el mensaje de game over, el dado y la barra de vida de los players.
+// 2. Se añade un evento al botón reset que llame a la función resetGame.
+
+document.getElementById("reset").addEventListener("click", resetGame);
+
+function resetGame() {
+  game.player.life = 100;
+  game.enemy.life = 100;
+  ul.innerHTML = "";
+  diceElement.innerText = "";
+  document.getElementById("attack").disabled = false;
+  renderLife(game.player);
+  renderLife(game.enemy);
+};
+
+

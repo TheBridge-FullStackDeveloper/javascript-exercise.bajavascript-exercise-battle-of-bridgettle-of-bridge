@@ -3,6 +3,8 @@ class BattleGame {
         this.dice = dice;
         this.player = player;
         this.enemy = enemy;
+    
+        
     }
 
     battle(attacker, defender) {
@@ -10,5 +12,8 @@ class BattleGame {
         attacker.attackPlayer(defender, this.dice.value)
 
     }
-    
+
 }
+
+
+
