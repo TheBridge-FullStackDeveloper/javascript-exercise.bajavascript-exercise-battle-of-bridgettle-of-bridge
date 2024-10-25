@@ -7,16 +7,22 @@ class Player {
     
 
     attackplayer(player, diceValue) {
-         if {
-            player.thislife <=0
-            return 
+         if (player.this.life <=0)
+            return console.log("You have no health");
+        }      
+            else {
+            const damageDone = this.attack * diceValue;
+            player.life  = player.life - damageDone;
          }
-    }
+        
+     console.log(`${this.name} ataca a ${player.name} y le hace ${damage} puntos de daño`);
+    
+    
+    
+    };
 
 
-    const Player = ()
-    const attackPlayer = new Player("The Rock", 100, attack *2);
-
+   
 
 
 }
