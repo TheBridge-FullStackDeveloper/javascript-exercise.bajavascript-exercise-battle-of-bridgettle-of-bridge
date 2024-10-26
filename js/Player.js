@@ -12,7 +12,7 @@ class Player {
       return 0;
     }
 
-    const damageDone = this.attack * diceValue;
+    const damageDone = this.attack * (diceValue*2);
     player.life -= damageDone;
 
     if (player.life < 0) {
